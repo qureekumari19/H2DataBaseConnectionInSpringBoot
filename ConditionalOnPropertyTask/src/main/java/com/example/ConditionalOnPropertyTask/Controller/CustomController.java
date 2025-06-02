@@ -38,7 +38,7 @@ public class CustomController {
         if(customService.getDetailsByID(customer.getId()).isPresent()){
             return new ResponseEntity<>(customService.getDetailsByID(customer.getId()).get(), HttpStatus.CONFLICT);
         }
-        customService.createEmployee(customer);
+        customService.createCustomer(customer);
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 

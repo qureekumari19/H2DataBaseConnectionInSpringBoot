@@ -50,4 +50,13 @@ public class Customer{
     public Customer() {
         System.out.println("Employee Constructor");
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "age=" + age +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
