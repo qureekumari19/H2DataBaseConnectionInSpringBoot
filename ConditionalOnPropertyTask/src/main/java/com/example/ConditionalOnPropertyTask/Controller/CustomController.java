@@ -42,4 +42,20 @@ public class CustomController {
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
+
+    @PutMapping("/modify")
+    public ResponseEntity<?> updateEmployee(@RequestBody Customer customer) throws CustomException {
+        Customer customer1=customService.getDetailsByID(customer.getId()).orElseThrow(() -> new CustomException("Customer Not Found for id: " + customer.getId()));
+        customService.updateCustomer(customer);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/del/{id}")
+    public ResponseEntity<?> deleteCustomerByID(@PathVariable int id) throws CustomException {
+        Optional<Customer> customer = Optional.ofNullable(customService.getDetailsByID(id).orElseThrow(() -> new CustomException("Customer Not available with id: " + id)));
+        customService.deleteCustomerByID(id);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
+
+    }
+
 }

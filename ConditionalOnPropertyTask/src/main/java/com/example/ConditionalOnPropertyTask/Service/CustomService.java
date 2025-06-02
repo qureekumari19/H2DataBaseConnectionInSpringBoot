@@ -28,4 +28,13 @@ public class CustomService {
     public void createEmployee(Customer customer){
         customRepo.save(customer);
     }
+
+    public void updateCustomer(Customer customer){
+        customRepo.save(customer);
+    }
+
+    public void deleteCustomerByID(int id){
+        Customer customer1=customRepo.findById(id).get();
+        customRepo.deleteById(id);
+    }
 }
